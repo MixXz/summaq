@@ -1,0 +1,26 @@
+.input-header-main-cont {
+    padding: 10px 20px 0px 20px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.input-header-tab {
+    text-transform: none !important;
+    font-size: large !important;
+    font-weight: 500 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #252525 !important;
+}
+
+.input-header-tab.Mui-selected {
+    color: #1c74d4 !important;
+}
+
+.input-header-text {
+    font-size: large;
+    font-weight: 500;
+    color: #252525;
+}

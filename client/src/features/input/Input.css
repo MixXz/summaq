@@ -1,0 +1,12 @@
+.input-main-cont {
+    height: 30rem;
+    width: 80%;
+
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+
+    border-radius: 20px;
+    /* border-bottom-left-radius: 40px; */
+    /* border-bottom-right-radius: 40px; */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
