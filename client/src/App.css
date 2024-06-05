@@ -13,8 +13,27 @@ body {
 #root {
     width: 100vw;
     height: 100vh;
+}
+
+.app-main-cont {
+    width: 100%;
+    height: 100%;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.app-title {
+    font-size: 50px !important;
+    font-weight: 700 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #252525 !important;
+}
+
+.app-subtitle {
+    font-size: 18px !important;
+    font-family: 'Inter', sans-serif !important;
+    color: #252525 !important;
 }

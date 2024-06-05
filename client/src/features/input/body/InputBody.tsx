@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import UserInput from './user-input/UserInput';
+import Output from './output/Output';
 
 import './InputBody.css';
 
@@ -10,7 +11,7 @@ const InputBody = () => {
         <UserInput />
       </Grid>
       <Grid item lg={6}>
-        Nesto
+        <Output />
       </Grid>
     </Grid>
   );
