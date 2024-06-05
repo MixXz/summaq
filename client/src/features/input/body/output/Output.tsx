@@ -1,7 +1,11 @@
 import './Output.css';
 
-const Output = () => {
-  return <div className='output-main-cont'>Output</div>;
+type Props = {
+  output: string;
+};
+
+const Output = ({ output }: Props) => {
+  return <div className='output-main-cont'>{output}</div>;
 };
 
 export default Output;

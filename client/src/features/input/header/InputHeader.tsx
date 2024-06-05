@@ -1,5 +1,5 @@
 import { Box, Slider, Tab, Tabs } from '@mui/material';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import './InputHeader.css';
 
@@ -18,11 +18,26 @@ const marks = [
   },
 ];
 
-const InputHeader = () => {
+type Props = {
+  summarizeLen: number;
+  setSummarizeLen: Dispatch<SetStateAction<number>>;
+  setIsParagraph: Dispatch<SetStateAction<boolean>>;
+};
+
+const InputHeader = ({
+  summarizeLen,
+  setSummarizeLen,
+  setIsParagraph,
+}: Props) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    setIsParagraph(newValue === 0);
+  };
+
+  const handleSliderChange = (_event: Event, newValue: number | number[]) => {
+    setSummarizeLen(newValue as number);
   };
 
   return (
@@ -34,7 +49,14 @@ const InputHeader = () => {
       {!value && (
         <Box className='input-header-slider-cont' sx={{ ml: 5 }}>
           <Box width={150}>
-            <Slider defaultValue={50} step={null} marks={marks} />
+            <Slider
+              marks={marks}
+              step={null}
+              min={marks[0].value}
+              max={marks[2].value}
+              value={summarizeLen}
+              onChange={handleSliderChange}
+            />
           </Box>
         </Box>
       )}

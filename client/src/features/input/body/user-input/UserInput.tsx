@@ -1,12 +1,21 @@
 import { Button } from '@mui/material';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import { Dispatch, SetStateAction } from 'react';
 
 import './UserInput.css';
 
-const UserInput = () => {
+type Props = {
+  setInput: Dispatch<SetStateAction<string>>;
+  handleSubmit: () => Promise<void>;
+};
+
+const UserInput = ({ handleSubmit, setInput }: Props) => {
   return (
     <div className='user-input-main-cont'>
-      <textarea placeholder='Enter or paste your text and click "Sumamrize."' />
+      <textarea
+        placeholder='Enter or paste your text and click "Sumamrize."'
+        onChange={(e) => setInput(e.target.value)}
+      />
       <div className='user-input-buttons'>
         <Button
           variant='outlined'
@@ -18,6 +27,7 @@ const UserInput = () => {
         <Button
           variant='contained'
           sx={{ mr: 5, borderRadius: 3, textTransform: 'none' }}
+          onClick={handleSubmit}
         >
           Summarize
         </Button>

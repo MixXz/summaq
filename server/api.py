@@ -7,9 +7,15 @@ from fastapi.responses import JSONResponse
 from services.huggingf_service import summarize_text, question_answer
 from utilities.files_manager import read_file
 from utilities.text_manager import text_to_bullet_points
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_methods=["*"],
+    allow_headers=["*"], 
+)
 
 @app.get("/")
 def health_check():
