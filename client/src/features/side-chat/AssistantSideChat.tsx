@@ -14,7 +14,7 @@ type Props = {
 const AssistantSideChat = ({ context }: Props) => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMsg[]>([]);
-  const { answer, loading, error, askWithText, reset } = useAssistantChat();
+  const { answer, loading, error, askWithText } = useAssistantChat();
 
   useEffect(() => {
     if (!answer) return;
@@ -25,11 +25,6 @@ const AssistantSideChat = ({ context }: Props) => {
     if (!question.trim()) return;
     setMessages((prev) => [{ role: "user", content: question }, ...prev]);
     askWithText(context, question);
-  };
-
-  const handleClear = () => {
-    setMessages([]);
-    reset();
   };
 
   return (
@@ -48,7 +43,6 @@ const AssistantSideChat = ({ context }: Props) => {
           messages={messages}
           loading={loading}
           error={error}
-          onClear={handleClear}
         />
         <AssistantChatInput loading={loading} onSend={handleSend} />
       </Drawer>

@@ -1,3 +1,5 @@
+import { Box } from "@mui/material";
+
 type Props = {
   output: string | string[] | null;
 };
@@ -17,7 +19,7 @@ const Output = ({ output }: Props) => {
     );
   }
 
-  return <div className="output-main-cont">{output}</div>;
+  return <Box sx={{ p: 2 }}>{output}</Box>;
 };
 
 export default Output;

@@ -1,5 +1,5 @@
 import { Backdrop, CircularProgress, Grid, Snackbar } from "@mui/material";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Output from "./output/Output";
 import UserInput from "./user-input/UserInput";
 
@@ -9,12 +9,13 @@ import "./InputBody.css";
 type Props = {
   summarizeLen: number;
   isParagraph: boolean;
+  input: string;
+  setInput: Dispatch<SetStateAction<string>>;
 };
 
 type SummarizeResponse = { result: string | string[] };
 
-const InputBody = ({ summarizeLen, isParagraph }: Props) => {
-  const [input, setInput] = useState<string>("");
+const InputBody = ({ input, setInput, summarizeLen, isParagraph }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [output, setOutput] = useState<string | string[] | null>(null);
   const [isError, setIsError] = useState<boolean>(false);

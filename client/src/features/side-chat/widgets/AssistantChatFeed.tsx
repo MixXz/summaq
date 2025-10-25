@@ -1,5 +1,6 @@
-import { Avatar, Box, CircularProgress, Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import logo from "../../../../public/assistant-logo.png";
+import AssistantChatLoading from "./AssistantChatLoading";
 import AssistantChatMessage from "./AssistantChatMessage";
 
 type Msg = { role: "user" | "assistant"; content: string };
@@ -70,11 +71,7 @@ const AssistantChatFeed = ({
       )}
 
       {/* Loading */}
-      {loading && (
-        <Box sx={{ display: "flex", justifyContent: "center", mb: 1 }}>
-          <CircularProgress size={24} color="inherit" />
-        </Box>
-      )}
+      {loading && <AssistantChatLoading />}
 
       {/* Messages (newest at top because column-reverse) */}
       {messages.map((m) => (

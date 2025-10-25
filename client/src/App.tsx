@@ -1,9 +1,12 @@
 import { Typography } from "@mui/material";
+import { useState } from "react";
 import "./App.css";
 import Input from "./features/input/Input";
 import AssistantSideChat from "./features/side-chat/AssistantSideChat";
 
 const App = () => {
+  const [input, setInput] = useState<string>("");
+
   return (
     <div className="app-main-cont">
       <Typography className="app-title">
@@ -21,8 +24,8 @@ const App = () => {
         : Summarize complex text into clear, concise points for easier learning
         and engaging presentations.
       </Typography>
-      <Input />
-      <AssistantSideChat context={"Town has 155 people."} />
+      <Input input={input} setInput={setInput} />
+      <AssistantSideChat context={input} />
     </div>
   );
 };
