@@ -76,7 +76,11 @@ const InputBody = ({ input, setInput, summarizeLen, isParagraph }: Props) => {
       />
       <Grid container spacing={0} className="input-body-main-cont">
         <Grid item lg={6}>
-          <UserInput setInput={setInput} handleSubmit={handleSubmit} />
+          <UserInput
+            input={input}
+            setInput={setInput}
+            handleSubmit={handleSubmit}
+          />
         </Grid>
         <Grid item lg={6}>
           <Output output={output} />

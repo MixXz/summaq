@@ -16,8 +16,12 @@
     "@mui/material": "^5.15.19",
     "axios": "^1.7.2",
     "date-fns": "^4.1.0",
+    "jszip": "^3.10.1",
+    "mammoth": "^1.11.0",
+    "pdfjs-dist": "^5.4.296",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
