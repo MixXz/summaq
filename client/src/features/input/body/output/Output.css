@@ -1,3 +1,16 @@
 .output-main-cont {
-    padding: 20px;
+  max-width: 60rem;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: medium;
+  padding: 20px;
+}
+
+.output-list {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.output-list li {
+  margin-bottom: 0.4rem;
 }

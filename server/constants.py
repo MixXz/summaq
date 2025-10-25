@@ -1,16 +1,15 @@
-import logging
 import os
 from collections import namedtuple
 
-from dotenv import load_dotenv
+# Local LLM (Ollama OpenAI-compatible)
+LLM = namedtuple('LLM', ['BASE_URL', 'API_KEY', 'MODEL'])
+LOCAL_LLM = LLM(
+    BASE_URL=os.environ.get("LOCAL_LLM_BASE_URL", "http://localhost:11434/v1"),
+    API_KEY=os.environ.get("LOCAL_LLM_API_KEY", "ollama"),  # dummy string is fine
+    MODEL=os.environ.get("LOCAL_LLM_MODEL", "mistral:instruct")
+)
 
-load_dotenv()
-
-Config = namedtuple('Config', ['API_KEY', 'BART_URL', 'ROBERTA_URL'])
-HUGGING_FACE = Config(API_KEY=os.environ.get("HUGGING_FACE_API_URL"),
-                      BART_URL="https://api-inference.huggingface.co/models/facebook/bart-large-cnn",
-                      ROBERTA_URL="https://api-inference.huggingface.co/models/deepset/roberta-base-squad2")
-
+# Logging config
+import logging
 Config = namedtuple('Config', ['LEVEL', 'FORMAT'])
-LOGGER = Config(LEVEL=logging.INFO,
-                FORMAT='[%(asctime)s] %(levelname)s: %(message)s')
+LOGGER = Config(LEVEL=logging.INFO, FORMAT='[%(asctime)s] %(levelname)s: %(message)s')

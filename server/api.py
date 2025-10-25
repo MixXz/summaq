@@ -1,12 +1,10 @@
 from typing import Optional
-
 import uvicorn
 from fastapi import FastAPI, UploadFile, File, Form, Request
 from fastapi.responses import JSONResponse
 
-from services.huggingf_service import summarize_text, question_answer
+from services.llm_service import summarize_text, question_answer
 from utilities.files_manager import read_file
-from utilities.text_manager import text_to_bullet_points
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -21,7 +19,6 @@ app.add_middleware(
 def health_check():
     return "I'm healthy!"
 
-
 @app.post("/summarize/")
 async def summarize(
         file: Optional[UploadFile] = File(None),
@@ -29,8 +26,6 @@ async def summarize(
         summary_percentage: int = Form(50),
         bullet_format: bool = Form(False)
 ):
-    input_text = ""
-
     if file:
         file_content = await read_file(file)
         if file_content is None:
@@ -39,14 +34,11 @@ async def summarize(
     elif text:
         input_text = text
     else:
-        raise BadRequestException("Text or file containg text should be provieded.")
+        raise BadRequestException("Text or file containing text should be provided.")
 
-    result = summarize_text(input_text, summary_percentage)
+    result = summarize_text(input_text, summary_percentage, bullet_format=bullet_format)
     if result is None:
         raise BadRequestException("Error summarizing text.")
-
-    if bullet_format:
-        result = text_to_bullet_points(result)
 
     return {"result": result}
 
